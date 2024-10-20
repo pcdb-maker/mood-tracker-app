@@ -1,6 +1,6 @@
 module moodtracker
 
-go 1.23.2
+go 1.23
 
 require (
 	github.com/felixge/httpsnoop v1.0.4 // indirect
