@@ -12,7 +12,7 @@ const MoodForm = () => {
       alert('Please select a mood.');
       return;
     }
-    await axios.post('http://localhost:8000/mood', {
+    await axios.post('https://mood-tracker-app-kau4.onrender.com', {
       mood,
       date: new Date(),
     });

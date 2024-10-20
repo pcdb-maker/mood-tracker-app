@@ -8,7 +8,7 @@ const MoodCalendar = () => {
 
   useEffect(() => {
     const fetchMoods = async () => {
-      const response = await axios.get('http://localhost:8000/moods');
+      const response = await axios.get('https://mood-tracker-app-kau4.onrender.com');
       setMoods(response.data);
     };
     fetchMoods();

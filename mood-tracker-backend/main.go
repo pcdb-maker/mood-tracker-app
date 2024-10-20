@@ -32,7 +32,6 @@ func getMoods(w http.ResponseWriter, r *http.Request) {
     json.NewEncoder(w).Encode(moods)
 }
 
-
 func main() {
     router := mux.NewRouter()
 
@@ -40,13 +39,13 @@ func main() {
     router.HandleFunc("/mood", logMood).Methods("POST")
     router.HandleFunc("/moods", getMoods).Methods("GET")
 
-    // Enable CORS for localhost:3000 (React app)
+    // Enable CORS with headers, methods, and the correct origin
     headers := handlers.AllowedHeaders([]string{"X-Requested-With", "Content-Type", "Authorization"})
     methods := handlers.AllowedMethods([]string{"GET", "POST", "PUT", "DELETE"})
-    origins := handlers.AllowedOrigins([]string{"http://localhost:3000"})
+
+    // Allowed origins (only include your frontend URL here)
+    origins := handlers.AllowedOrigins([]string{"https://mood-tracker-frontend.onrender.com"})  // Replace this with your actual frontend URL
 
     // Wrap the router with CORS handler
     http.ListenAndServe(":8000", handlers.CORS(headers, methods, origins)(router))
 }
-
-
